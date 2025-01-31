@@ -1,9 +1,11 @@
 
+import { ReactNode } from 'react';
+
 export interface Product {
-    productName: ReactI18NextChildren | Iterable<ReactI18NextChildren>;
+    productName: ReactNode | Iterable<ReactNode>;
 
     _id : string;
-    title: string,
+    title: string;
     type: "product";
     image? : {
 
