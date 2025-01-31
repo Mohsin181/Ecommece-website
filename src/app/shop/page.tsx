@@ -1,140 +1,49 @@
+"use client"
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { Product } from "../../../types/products";
+import { allProducts } from "@/sanity/lib/queries";
+import { client } from "@/sanity/lib/client";
 
-import React from 'react'
-import Image from 'next/image'
+const SHOP = () => {
+  const [product, setProduct] = useState<Product[]>([]);
+  const [cart, setCart] = useState<Product[]>([]);
 
-const page = () => {
+  useEffect(() => {
+    async function fetchProduct() {
+      const fetchedProduct: Product[] = await client.fetch(allProducts);
+      setProduct(fetchedProduct);
+    }
+    fetchProduct();
+  }, []);
+
+  const addToCart = (item: Product) => {
+    setCart([...cart, item]);
+    alert(`${item.title} added to cart!`);
+  };
+
   return (
-    <div>
-
-        <Image src={"/img23.png"} alt='img18' width={1440} height={2051}></Image>
-
-      
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {product.map((product) => (
+          <div className="p-2 border-slate-200 border" key={product._id}>
+            <Image src={product.productImage || ""} alt={product.title} height={300} width={300} />
+            <h1 className="text-lg font-bold text-gray-800">{product.title}</h1>
+            <p className="text-sm text-gray-600">{product.tags?.[0]}</p>
+            <div className="flex items-center justify-between mt-2">
+              <p className="text-lg font-semibold">{product.price}</p>
+            </div>
+            <button
+              onClick={() => addToCart(product)}
+              className="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
+            >
+              Add to Cart
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default page
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import react from "react"
-// import Image from "next/image"
-// import navbar from "@/components/navbar"
-// import { IoFilterSharp } from "react-icons/io5";
-// import { GoTrophy } from "react-icons/go";
-// import { MdOutlineVerified } from "react-icons/md";
-// import { FaShippingFast } from "react-icons/fa";
-// import { FcCustomerSupport } from "react-icons/fc";
-
-
-
-
-
-
-// import React from 'react'
-// import Navbar from "@/components/navbar"
-
-// const page = () => {
-//   return (
-    
-    
-//     <div>
-
-
-
-
-
-//       <div>
-
-// <Image src={"/img13.png"} alt="img13" width={1440} height={316} ></Image>
-
-// </div>
-
-// <div className="bg-[#F9F1E7] h-16   flex-row ">
-
-// <IoFilterSharp />
-
-// <p className="flex justify-center items-center">Filter</p>
-
-// <p>Showing1-16 of 32 results</p>
-
-// <p>Show 16</p>
-// <p>Sort by Default</p>
-
-
-// </div>
-
-
-// <div className="mt-32 bg-[#FAF3EA]  h-20 flex justify-between">
-
-
-// <div className="mr-32">
-// <GoTrophy className="" />
-
-// <h1 > High Quality</h1>
-// <span >crafted from top materials</span>
-
-// </div>
-
-
-// <div className="mr-96">
-// <MdOutlineVerified />
-
-
-// <h1 className="">Warranty Protection</h1>
-// <span className="">Over 2 years</span>
-
-// </div>
-
-
-
-
-
-
-// <div>
-// <FaShippingFast />
-
-// <h1 > Free Shipping</h1>
-// <span >Order over 150 $</span>
-
-// </div>
-
-
-
-
-
-
-// <div >
-// <FcCustomerSupport />
-
-
-// <h1> 24 / 7 Support</h1>
-// <span>Dedicated support</span>
-
-// </div>
-
-
-// </div>
-
-
-
-
-//     </div>
-//   )
-// }
-
-// export default page
+export default SHOP;
