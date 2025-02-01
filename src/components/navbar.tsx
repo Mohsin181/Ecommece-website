@@ -20,7 +20,7 @@ const navbar = () => {
 
               <div className='flex gap-8 size-1px font-normal  text-black underline'>
 
-                  <Link href='Home'>
+                  <Link href='home'>
                       Home
                   </Link>
 

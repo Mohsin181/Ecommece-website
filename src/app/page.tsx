@@ -1,28 +1,10 @@
-import Hero from "@/components/hero"
-import Browser from "@/components/browser";
-import RoomInspiration from "@/components/roominspiration";
-import Furniture from "@/components/furniture";
-import OurProducts from "@/components/ourproducts";
+import React from 'react'
+import HomePage from './home/page'
 
-
-export default function Home() {
-  
+export default function page() {
   return (
     <div>
-
-
-
-<Hero/>
-<Browser/>
-<OurProducts/>
-<RoomInspiration/>
-<Furniture/>
-
-
-
-
-
-
+      <HomePage/>
     </div>
-  );
-}; 
+  )
+};
