@@ -38,7 +38,8 @@ const OurProducts = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <h1 className="text-center py-5 text-3xl text-black font-bold"> Our Produts</h1>
+      <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {product.map((product) => (
           <div className="p-2 w-[300px] overflow-hidden border-slate-200 rounded-md border" key={product._id}>
             <Image src={product.productImage || ""} alt={product.title} height={300}  width={300}
