@@ -1,8 +1,8 @@
 import Hero from "@/components/hero"
 import Browser from "@/components/browser";
-import Products from "@/components/products";
 import RoomInspiration from "@/components/roominspiration";
 import Furniture from "@/components/furniture";
+import OurProducts from "@/components/ourproducts";
 
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
 
 <Hero/>
 <Browser/>
-<Products/>
+<OurProducts/>
 <RoomInspiration/>
 <Furniture/>
 
