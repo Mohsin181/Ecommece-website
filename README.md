@@ -80,3 +80,10 @@ Every step brings me closer to a more robust and efficient project!  Excited for
 ![My Image](public/day5img3.png)
 
 
+
+Lighthousereport Performance report 
+
+
+![My Image](public/lighthousereport2.png)
+
+![My Image](public/lighthousereport1.png)
